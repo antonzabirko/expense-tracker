@@ -3,6 +3,7 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
+import uuid from 'uuid';
 
 const now = moment();
 console.log(now.format('MMM Do, YYYY'));
@@ -91,6 +92,8 @@ export default class ExpenseForm extends React.Component {
                         onFocusChange={this.onFocusChange}
                         numberOfMonths={1}
                         isOutsideRange={() => false}
+                        startDateId={uuid()}
+                        endDateId={uuid()}
                     />
                     <textarea
                         placeholder="Add a note for your expense (optional)"
