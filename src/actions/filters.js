@@ -13,14 +13,14 @@ const sortByAmount = () => ({
     type: 'SORT_BY_AMOUNT'
 });
 // SET_START_DATE
-const setStartDate = (date) => ({
+const setStartDate = (startDate) => ({
     type: 'SET_START_DATE',
-    date
+    startDate
 });
 // SET_END_DATE
-const setEndDate = (date) => ({
+const setEndDate = (endDate) => ({
     type: 'SET_END_DATE',
-    date
+    endDate
 });
 
 export { setTextFilter, sortByAmount, sortByDate, setEndDate, setStartDate };
