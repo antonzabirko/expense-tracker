@@ -7,15 +7,18 @@ import 'react-dates/initialize';
 import uuid from 'uuid';
 
 class ExpenseListFilters extends React.Component {
-    state ={
+    state = {
         calendarFocused: null
     };
     onDatesChange = ({ startDate, endDate }) => {
         this.props.dispatch(setStartDate(startDate));
         this.props.dispatch(setEndDate(endDate));
+        console.log('start date ' + startDate);
+        console.log(this.props.filters);
     };
     onFocusChange = (calendarFocused) => {
-        this.setState(() => ({ calendarFocused }));
+            this.setState(() => ({calendarFocused}));
+        console.log('on focus change');
     };
     render() {
         return (
