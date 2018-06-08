@@ -35,7 +35,7 @@ test('should add an expense', () => {
         amount: 50000,
         createdAt: moment(0),
         id: '100',
-        note: ''
+        note: 'Test Note'
     };
     const action = {
         type: 'ADD_EXPENSE',

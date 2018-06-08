@@ -4,15 +4,15 @@ import { SingleDatePicker } from 'react-dates';
 import uuid from 'uuid';
 
 const now = moment();
-console.log(now.format('MMM Do, YYYY'));
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            id: props.expense ? props.expense.id : "",
             description: props.expense ? props.expense.description : "",
-            textArea: props.expense ? props.expense.textArea : "",
+            textArea: props.expense ? props.expense.note : "",
             amount: props.expense ? (props.expense.amount / 100).toString() : "",
             createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
             calendarFocused: false,
@@ -24,9 +24,8 @@ export default class ExpenseForm extends React.Component {
         this.setState(() => ({ description }));
     };
     onTextAreaChange = (e) => {
-        // Alternative way:
-        e.persist();
-        this.setState(() => ({ textArea: e.target.value }));
+        const textArea = e.target.value;
+        this.setState(() => ({ textArea }));
     };
     onAmountChange = (e) => {
         const amount = e.target.value;
@@ -58,7 +57,6 @@ export default class ExpenseForm extends React.Component {
                 createdAt: this.state.createdAt.valueOf(),
                 note: this.state.textArea
             });
-            console.log('submitted');
         }
     };
     render() {
