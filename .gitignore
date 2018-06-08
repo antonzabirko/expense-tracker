@@ -4,3 +4,8 @@ node_modules/
 \.idea/
 
 yarn-error.log
+*.map
+
+public/styles\.css
+
+public/bundle\.js
