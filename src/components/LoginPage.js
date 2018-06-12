@@ -2,20 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 
-const LoginPage = ({ startLogin }) => (
+export const LoginPage = ({ startLogin }) => (
   <div>
     <form>
-      <input
-        type="text"
-        placeholder="username"
-      />
-      <input
-        type="text"
-        placeholder="password"
-      />
-      <button
-        onClick={startLogin}
-      >Login</button>
+      <input type="text" placeholder="username"/>
+      <input type="text" placeholder="password"/>
+      <button onClick={startLogin}>Login</button>
     </form>
   </div>
 );
