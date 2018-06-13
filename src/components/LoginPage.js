@@ -5,8 +5,8 @@ import { startLogin } from '../actions/auth';
 export const LoginPage = ({ startLogin }) => (
   <div>
     <form>
-      <input type="text" placeholder="username"/>
-      <input type="text" placeholder="password"/>
+      //<input type="text" placeholder="username"/>
+      //<input type="text" placeholder="password"/>
       <button onClick={startLogin}>Login</button>
     </form>
   </div>
