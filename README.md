@@ -8,3 +8,5 @@ Created with React using Redux alongside [Andrew Mead](https://twitter.com/andre
  
 Hosted on Heroku as of 6/8! 🎉🎉🎉
 https://expensemap.herokuapp.com/
+
+[expensemap.herokuapp.com](https://expensemap.herokuapp.com)
