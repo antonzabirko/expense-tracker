@@ -4,9 +4,7 @@ import { startLogin } from '../actions/auth';
 
 export const LoginPage = ({ startLogin }) => (
   <div>
-    <form>
-      <button onClick={startLogin}>Login</button>
-    </form>
+      <button onClick={startLogin}>Login with Google</button>
   </div>
 );
 /*<input type="text" placeholder="username"/>
