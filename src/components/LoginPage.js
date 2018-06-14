@@ -5,12 +5,12 @@ import { startLogin } from '../actions/auth';
 export const LoginPage = ({ startLogin }) => (
   <div>
     <form>
-      //<input type="text" placeholder="username"/>
-      //<input type="text" placeholder="password"/>
       <button onClick={startLogin}>Login</button>
     </form>
   </div>
 );
+/*<input type="text" placeholder="username"/>
+  <input type="text" placeholder="password"/>*/
 
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin())
