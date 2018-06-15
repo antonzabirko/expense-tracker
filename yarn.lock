@@ -279,10 +279,6 @@
     "@webassemblyjs/wast-parser" "1.5.9"
     long "^3.2.0"
 
-Express@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/Express/-/Express-3.0.1.tgz#e64ef7cb37684a69fc22d4111ddde4498896496a"
-
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"

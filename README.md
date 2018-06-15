@@ -1,6 +1,8 @@
 # Expense Tracker 
 
-[![Build Status](https://travis-ci.org/antonzabirko/expense-tracker.svg?branch=master)](https://travis-ci.org/antonzabirko/expense-tracker)[![Coverage Status](https://coveralls.io/repos/github/antonzabirko/expense-tracker/badge.svg?branch=master)](https://coveralls.io/github/antonzabirko/expense-tracker?branch=master)
+[![Build Status](https://travis-ci.org/antonzabirko/expense-tracker.svg?branch=master)](https://travis-ci.org/antonzabirko/expense-tracker)
+[![Coverage Status](https://coveralls.io/repos/github/antonzabirko/expense-tracker/badge.svg?branch=master)](https://coveralls.io/github/antonzabirko/expense-tracker?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/antonzabirko/expense-tracker/badge.svg)](https://snyk.io/test/github/antonzabirko/expense-tracker)
  
 This application tracks finances on a daily basis. You can add, remove, and edit expenses and apply filters to view expenses. 
  
