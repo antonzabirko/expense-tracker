@@ -2,18 +2,8 @@
 
 exports[`should render LoginPage correctly 1`] = `
 <div>
-  <form>
-    <input
-      placeholder="username"
-      type="text"
-    />
-    <input
-      placeholder="password"
-      type="text"
-    />
-    <button>
-      Login
-    </button>
-  </form>
+  <button>
+    Login with Google
+  </button>
 </div>
 `;
