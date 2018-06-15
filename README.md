@@ -1,4 +1,6 @@
-# Expense Tracker [![Build Status](https://travis-ci.org/antonzabirko/expense-tracker.svg?branch=master)](https://travis-ci.org/antonzabirko/expense-tracker)
+# Expense Tracker 
+
+# [![Build Status](https://travis-ci.org/antonzabirko/expense-tracker.svg?branch=master)](https://travis-ci.org/antonzabirko/expense-tracker)
  
 This application tracks finances on a daily basis. You can add, remove, and edit expenses and apply filters to view expenses. 
  
