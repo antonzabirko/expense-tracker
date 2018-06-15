@@ -1,10 +1,10 @@
-# Expense Tracker: [expensemap.herokuapp.com](https://expensemap.herokuapp.com)
+# ExpenseMap: [expensemap.herokuapp.com](https://expensemap.herokuapp.com)
 
 [![Build Status](https://travis-ci.org/antonzabirko/expense-tracker.svg?branch=master)](https://travis-ci.org/antonzabirko/expense-tracker)
 [![Coverage Status](https://coveralls.io/repos/github/antonzabirko/expense-tracker/badge.svg?branch=master)](https://coveralls.io/github/antonzabirko/expense-tracker?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/antonzabirko/expense-tracker/badge.svg)](https://snyk.io/test/github/antonzabirko/expense-tracker)
  
-ExpenseMap is a tiny budget management app created to demonstrate the power of React:Redux.
+ExpenseMap is a tiny budget management app created to demonstrate the power of React with Redux.
 
 ## Features
 
@@ -21,4 +21,4 @@ If you want to see the latest dev: pull, install dependencies, and run `yarn run
 
 ## Stack
 
-Created with React using Redux alongside [Andrew Mead](https://twitter.com/andrew_j_mead?lang=en)'s course.
+Created using React with Redux alongside [Andrew Mead](https://twitter.com/andrew_j_mead?lang=en)'s course.
