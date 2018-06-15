@@ -14,3 +14,5 @@ src/playground/
 \.env\.test
 \.env\.development
 package-lock.json
+
+coverage/
