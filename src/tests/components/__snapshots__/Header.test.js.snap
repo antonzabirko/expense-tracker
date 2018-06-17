@@ -5,6 +5,9 @@ exports[`should render Header correctly 1`] = `
   className="header"
 >
   <div
+    className="color-bar"
+  />
+  <div
     className="content-container"
   >
     <div

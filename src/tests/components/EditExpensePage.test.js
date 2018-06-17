@@ -1,9 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
+import ConfirmationModal from '../../components/ConfirmationModal';
+import ReactModal from 'react-modal';
+import { ReactDOM } from 'react-dom';
 
-let history, wrapper, startEditExpense, startRemoveExpense;
+
+let history, wrapper, wrapperModal, startEditExpense, startRemoveExpense;
 
 beforeEach(() => {
     history = { push: jest.fn() };
@@ -25,10 +29,4 @@ test('should handle editExpense', () => {
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[2]);
     expect(history.push).toHaveBeenLastCalledWith('/');
     expect(startEditExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2]);
-});
-
-test('should handle startRemoveExpense', () => {
-    wrapper.find('button').simulate('click');
-    expect(history.push).toHaveBeenLastCalledWith('/');
-    expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[2].id });
 });
