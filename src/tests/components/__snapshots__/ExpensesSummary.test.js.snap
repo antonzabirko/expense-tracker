@@ -5,7 +5,7 @@ exports[`should render a single expense 1`] = `
   className="page-header"
 >
   <div
-    className="content-container"
+    className="content-container page-header-flex"
   >
     <h1
       className="page-header__title"
@@ -19,9 +19,7 @@ exports[`should render a single expense 1`] = `
         $400.00
       </span>
     </h1>
-    <div
-      className="page-header__actions"
-    >
+    <div>
       <Link
         className="button"
         replace={false}
@@ -39,7 +37,7 @@ exports[`should render multiple expenses 1`] = `
   className="page-header"
 >
   <div
-    className="content-container"
+    className="content-container page-header-flex"
   >
     <h1
       className="page-header__title"
@@ -55,9 +53,7 @@ exports[`should render multiple expenses 1`] = `
         $10,023.00
       </span>
     </h1>
-    <div
-      className="page-header__actions"
-    >
+    <div>
       <Link
         className="button"
         replace={false}
