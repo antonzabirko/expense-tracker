@@ -1,9 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import uuid from 'uuid';
-
-const now = moment();
+import {startRemoveExpense} from "../actions/expenses";
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
@@ -61,6 +59,7 @@ export default class ExpenseForm extends React.Component {
     };
     render() {
         return (
+            <div>
                 <form className="form" onSubmit={this.onSubmit}>
                     {this.state.error && <p className="form__error">{this.state.error}</p>}
                     <input
@@ -93,10 +92,11 @@ export default class ExpenseForm extends React.Component {
                         onChange={this.onTextAreaChange}
                     >
                     </textarea>
-                    <div>
-                        <button className="button">Submit</button>
-                    </div>
                 </form>
+                <div>
+                    <button className="button">Save Expense</button>
+                </div>
+            </div>
         )
     }
 }
