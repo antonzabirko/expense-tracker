@@ -22,4 +22,4 @@ If you want to see the latest dev: pull, install dependencies, and run `yarn run
 
 ## Stack
 
-Created using React with Redux alongside [Andrew Mead](https://twitter.com/andrew_j_mead?lang=en)'s course.
+Created using React with Redux.

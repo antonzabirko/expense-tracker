@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { withFormik } from 'formik'
+import { withFormik, Form, Field } from 'formik'
 import Yup from 'yup'
 import { startGoogleLogin, startEmailLogin } from '../actions/auth'
 
@@ -17,28 +17,31 @@ export const LoginPage = ({ values, handleChange, startGoogleLogin, startEmailLo
           </div>
           <div className="box-layout__break"></div>
           <div className="box-layout__part">
-              <form className="box-layout__form">
-                  <input
+              <Form className="box-layout__form">
+                  <Field
                       className="box-layout__input"
-                      disabled={true}
+                      /*disabled={true}*/
                       name="email"
                       onChange={handleChange}
                       placeholder="email"
                       type="email"
                       value={values.email}
                   />
-                  <input
+                  <Field
                       className="box-layout__input"
-                      disabled={true}
+                      /*disabled={true}*/
+                      name="password"
+                      onChange={handleChange}
                       placeholder="password"
                       type="text"
+                      value={values.password}
                   />
-              </form>
-              <button
-                  className="button box-layout__button login-button"
-                  disabled={true}
-                  onClick={startEmailLogin}
-              >Login</button>
+                  <button
+                      className="button box-layout__button login-button"
+                      /*disabled={true}*/
+                      /*onClick={startEmailLogin}*/
+                  >Login</button>
+              </Form>
           </div>
           <div className="box-layout__break"></div>
           <div className="box-layout__part">
@@ -55,16 +58,21 @@ export const LoginPage = ({ values, handleChange, startGoogleLogin, startEmailLo
 );
 
 const FormikApp = withFormik({
-    mapPropsToValues({ email }) {
+    mapPropsToValues({ email, password }) {
         return {
-            email: email || ''
+            email: email || '',
+            password: password || ''
         }
+    },
+    handleSubmit(values) {
+        console.log(values.email);
+        startEmailLogin(values.email, values.password)
     }
 })(LoginPage);
 
 const mapDispatchToProps = (dispatch) => ({
     startGoogleLogin: () => dispatch(startGoogleLogin()),
-    startEmailLogin: () => dispatch(startEmailLogin())
+    startEmailLogin: (email, password) => dispatch(startEmailLogin(email, password))
 });
 
 export default connect(undefined, mapDispatchToProps)(FormikApp);

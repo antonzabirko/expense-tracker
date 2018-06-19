@@ -12,10 +12,10 @@ export const startGoogleLogin = () => {
     };
 };
 
-export const startEmailLogin = () => {
+export const startEmailLogin = (email, password) => {
     return () => {
-        return firebase.auth().signInWithEmailAndPassword('john@aol.com', '123456')
-            .catch((e) => alert('Error: ' + e));
+        return firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch((e) => alert('Error: ' + e + " Email: " + email + " Password: " + password));
     };
 };
 
