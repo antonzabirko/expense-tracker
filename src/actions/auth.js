@@ -8,14 +8,14 @@ export const login = (uid) => ({
 export const startGoogleLogin = () => {
     return () => {
         return firebase.auth().signInWithPopup(googleAuthProvider)
-            .catch((e) => alert('Error: ' + e));
+            .catch((e) => {});
     };
 };
 
 export const startEmailLogin = (email, password) => {
     return () => {
         return firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch((e) => alert('Error: ' + e + " Email: " + email + " Password: " + password));
+            .catch((e) => {});
     };
 };
 
