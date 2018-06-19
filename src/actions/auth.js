@@ -5,11 +5,18 @@ export const login = (uid) => ({
     uid
 });
 
-export const startLogin = () => {
-  return () => {
-    return firebase.auth().signInWithPopup(googleAuthProvider)
-        .catch((e) => alert('Error: ' + e));
-  };
+export const startGoogleLogin = () => {
+    return () => {
+        return firebase.auth().signInWithPopup(googleAuthProvider)
+            .catch((e) => alert('Error: ' + e));
+    };
+};
+
+export const startEmailLogin = () => {
+    return () => {
+        return firebase.auth().signInWithEmailAndPassword('john@aol.com', '123456')
+            .catch((e) => alert('Error: ' + e));
+    };
 };
 
 export const logout = () => ({

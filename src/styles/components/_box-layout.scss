@@ -3,6 +3,7 @@
   background: url('/images/bg.jpg');
   background-size: cover;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   width: 100vw;
@@ -11,12 +12,69 @@
 .box-layout__box {
   background: fade-out(white, .15);
   border-radius: 3px;
-  padding: $l-size $m-size;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  padding: $s-size $m-size;
   text-align: center;
-  width: 25rem;
+  width: 40rem;
+}
+
+.box-layout__part {
+  display: flex;
+  flex-direction: column;
+  padding: $s-size $m-size;
+  text-align: center;
+  width: 100%;
 }
 
 .box-layout__title {
   line-height: 1;
   margin: 0 0 $m-size 0;
+}
+
+.box-layout__input {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  align-self: center;
+  font-size: $font-size-large;
+  font-weight: 300;
+  height: 40px;
+  margin: $s-size;
+  padding: $s-size;
+  width: 90%;
+  &:disabled {
+    background: $dark-grey;
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+}
+
+.box-layout__button {
+  margin: $s-size 0;
+}
+
+.box-layout__button-disabled {
+  background: $dark-grey;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  cursor: not-allowed;
+  top: 0;
+  opacity: 0.2;
+  &:hover {
+    background: $dark-grey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    cursor: not-allowed;
+    top: 0;
+    opacity: 0.2;
+  }
+}
+
+.box-layout__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-layout__break {
+  height: 1px;
+  background: darken($off-white, 20%);
 }

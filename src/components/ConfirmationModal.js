@@ -1,5 +1,5 @@
-import React from 'react';
-import Modal from 'react-modal';
+import React from 'react'
+import Modal from 'react-modal'
 
 const ConfirmationModal = (props) => (
     <Modal
@@ -17,5 +17,7 @@ const ConfirmationModal = (props) => (
         </div>
     </Modal>
 );
+
+Modal.setAppElement('#app');
 
 export default ConfirmationModal;

@@ -12,6 +12,7 @@ ExpenseMap is a tiny budget management app created to demonstrate the power of R
 * **Overview of Filtered Expenses:** An overview of expenses is given at all times. The overview includes the number of currently visible expenses and their total value.
 * **Add/Edit/Remove Expenses:** Expenses can be added, edited, and removed.
 * **Search:** Expenses can be searched by description.
+* **Removal Confirmation:** Confirm expense removal with a modal pop-up.
 
 ## Installation
  

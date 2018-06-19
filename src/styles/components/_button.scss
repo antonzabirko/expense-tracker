@@ -27,40 +27,62 @@
   &:focus {
     outline: 0;
   }
+  &:disabled {
+    background: $dark-grey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    cursor: not-allowed;
+    opacity: 0.2;
+    top: 0;
+  }
 }
 
 .button--link {
-  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
   border: 1px solid lightblue;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+  color: #eeeeee;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.20);
+  transition: border .3s ease, color .3s ease, text-shadow .3s ease;
 
   &:hover {
+    border: 1px solid aliceblue;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+    color: $dark-grey;
+    text-shadow: 0 0px 0px rgba(0,0,0,0.0);
     top: 0;
   }
   &:active {
-    border: 1px solid lightblue;
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.0);
+    border: 1px solid aliceblue;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0px 0px rgba(0,0,0,0.0);
     top: 0;
   }
 }
 
 .button-secondary {
-  background: linear-gradient(#FF4136, adjust-hue(#FF4136, 10));
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-  top: 0;
-  transition: top .3s ease;
+  background: none;
+  box-shadow: none;
+  color: lighten($dark-grey, 20%);
+  text-shadow: none;
+  transition: color .3s ease;
 
   &:hover {
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.20), inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
-    position: relative;
-    top: -1px;
-    transition: top .3s ease;
-    z-index: 1;
+    background: none;
+    box-shadow: none;
+    color: $dark-grey;
+    text-shadow: none;
+    top: 0;
   }
   &:active {
-    border-style: none;
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.20);
+    background: none;
+    box-shadow: none;
+    color: $dark-grey;
+    text-shadow: none;
     top: 0;
-    transition: top .3s ease;
+  }
+  &:disabled {
+    background: $dark-grey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    cursor: not-allowed;
+    top: 0;
   }
 }
