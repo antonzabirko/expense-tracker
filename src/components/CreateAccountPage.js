@@ -1,18 +1,23 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { startGoogleLogin } from '../actions/auth';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { withFormik, Form, Field } from 'formik'
+import Recaptcha from 'react-recaptcha'
+import { firebase } from '../firebase/firebase'
 
-class CreateAccountPage extends React.Component {
-    onCreation = () => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-        });
-    };
-    render() {
-        return (
+let firebaseError;
+
+const CreateAccountPage = (
+    {
+        values,
+        errors,
+        touched,
+        isSubmitting,
+        handleChange,
+    }
+) => (
+            <div className="box-layout">
+                <div className="box-layout__color-bar"></div>
         <div className="box-layout">
             <div className="box-layout__box">
                 <div className="box-layout__part">
@@ -20,35 +25,62 @@ class CreateAccountPage extends React.Component {
                 </div>
                 <div className="box-layout__break"></div>
                 <div className="box-layout__part">
-                    <form className="box-layout__form">
-                        <input
+                    <Form className="box-layout__form">
+                        { firebaseError && <p className="box-layout__error">{firebaseError}</p> }
+                        { touched.email && errors.email && <p className="box-layout__error">{errors.email}</p> }
+                        <Field
+                            autoComplete="username"
                             className="box-layout__input"
-                            placeholder="email"
-                            type="text"
+                            name="email"
+                            placeholder="Email"
+                            type="email"
                         />
-                        <input
+                        { touched.password && errors.password && <p className="box-layout__error">{errors.password}</p> }
+                        <Field
+                            autoComplete="new-password"
                             className="box-layout__input"
-                            placeholder="password"
-                            type="text"
+                            name="password"
+                            placeholder="Password"
+                            type="password"
                         />
-                        <input
+                        { touched.password && errors.password && <p className="box-layout__error">{errors.password}</p> }
+                        <Field
+                            autoComplete="new-password"
                             className="box-layout__input"
-                            placeholder="confirm password"
-                            type="text"
+                            name="password"
+                            placeholder="Confirm password"
+                            type="password"
                         />
-                    </form>
-                    <button className="button box-layout__button login-button">Sign Up!</button>
+                        <div className="g-recaptcha">
+                            <Recaptcha
+                                className="box-layout__input g-recaptcha"
+                                sitekey="6LdhzV8UAAAAAMhqlyqL-6tN5bI1SWfHdHOc9KVy"
+                                theme="light"
+                            />
+                        </div>
+                        <button className="button box-layout__button login-button box-layout__button-disabled">Sign Up!</button>
+                    </Form>
+                    <Link to="/" className="button button--link">Back</Link>
                 </div>
             </div>
         </div>
-    )};
-}
-/*<input type="text" placeholder="username"/>
-  <input type="text" placeholder="password"/>*/
+            </div>
+);
 
-const mapDispatchToProps = (dispatch) => ({
-    startGoogleLogin: () => dispatch(startGoogleLogin()),
-    startEmailLogin: (email, password) => dispatch(startEmailLogin(email, password))
-});
+const FormikApp = withFormik({
+    mapPropsToValues({ email, password}) {
+        return {
+            email: email || '',
+            password: password || ''
+        }
+    },
+    handleSubmit(values) {
+        firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
+            .catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
+    }
+})(CreateAccountPage);
 
-export default connect(undefined, mapDispatchToProps)(CreateAccountPage);
+export default connect()(FormikApp);

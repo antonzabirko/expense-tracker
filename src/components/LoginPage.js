@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { withFormik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { startGoogleLogin, startEmailLogin } from '../actions/auth'
-import { firebase } from '../firebase/firebase';
+import { firebase } from '../firebase/firebase'
 
-let email, password;
+let firebaseError;
 
 export const LoginPage = (
   {
@@ -15,24 +15,26 @@ export const LoginPage = (
     touched,
     isSubmitting,
     handleChange,
-    startGoogleLogin,
-    startEmailLogin,
-    dispatch
+    startGoogleLogin
   }
 ) => (
-  <div className="box-layout">
-      <div className="box-layout__box">
-          <div id="particles-js"></div>
-          <div className="box-layout__part">
+    <div className="box-layout">
+        <div className="box-layout__color-bar"></div>
+    <div className="box-layout">
+        <div className="box-layout__box">
+            <div id="particles-js"></div>
+            <div className="box-layout__part">
               <h1 className="box-layout__title">ExpenseMap</h1>
               <button onClick={startGoogleLogin} className="button box-layout__button">Login with Google</button>
-          </div>
+            </div>
           <div className="box-layout__break"/>
           <div className="box-layout__part">
               <Form className="box-layout__form">
                 <div>
-                  { touched.email && errors.email && <p>{errors.email}</p> }
+                    { firebaseError && <p className="box-layout__error">{firebaseError}</p> }
+                  { touched.email && errors.email && <p className="box-layout__error">{errors.email}</p> }
                   <Field
+                      autoComplete="username"
                       className="box-layout__input"
                       name="email"
                       placeholder="Email"
@@ -40,8 +42,9 @@ export const LoginPage = (
                   />
                 </div>
                 <div>
-                  { touched.password && errors.password && <p>{errors.password}</p> }
+                  { touched.password && errors.password && <p className="box-layout__error">{errors.password}</p> }
                   <Field
+                      autoComplete="current-password"
                       className="box-layout__input"
                       name="password"
                       placeholder="Password"
@@ -51,16 +54,14 @@ export const LoginPage = (
                   <button
                       className="button box-layout__button login-button"
                       disabled={isSubmitting}
-                      /*disabled={true}*/
-                      /*onClick={startEmailLogin}*/
                   >Login</button>
               </Form>
           </div>
           <div className="box-layout__break"/>
           <div className="box-layout__part">
               <Link
-                    className="button box-layout__button box-layout__button-disabled"
-                    to="/"
+                    className="button box-layout__button"
+                    to="/signup"
                     disabled={true}
                 >
                       Create a New Account
@@ -68,6 +69,7 @@ export const LoginPage = (
           </div>
       </div>
   </div>
+    </div>
 );
 
 const FormikApp = withFormik({
@@ -84,11 +86,11 @@ const FormikApp = withFormik({
     handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
       firebase.auth().signInWithEmailAndPassword(values.email, values.password)
         .catch((e) => {
-          if(e.code === 'auth/wrong-password') {
-          } else {
+          if(e) {
+              firebaseError = 'Whoops! Something went wrong..'
           }
         })
-        .then((result) => {
+        .then(() => {
           setSubmitting = false;
           resetForm();
         });

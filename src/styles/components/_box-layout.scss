@@ -40,6 +40,7 @@
   font-size: $font-size-large;
   font-weight: 300;
   height: 40px;
+  justify-content: center;
   margin: $s-size;
   padding: $s-size;
   width: 90%;
@@ -77,4 +78,21 @@
 .box-layout__break {
   height: 1px;
   background: darken($off-white, 20%);
+}
+
+.box-layout__color-bar {
+  background: $olive;
+  height: 4px;
+  width: 100vw;
+}
+
+.box-layout__error {
+  color: red;
+  opacity: 100%;
+  transition: opacity .3s ease;
+}
+
+.g-recaptcha {
+  display: flex;
+  align-self: center;
 }

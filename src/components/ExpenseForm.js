@@ -1,7 +1,6 @@
-import React from 'react';
-import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
-import {startRemoveExpense} from "../actions/expenses";
+import React from 'react'
+import moment from 'moment'
+import { SingleDatePicker } from 'react-dates'
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
