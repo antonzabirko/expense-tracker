@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { withFormik, Form, Field } from 'formik'
 import Recaptcha from 'react-recaptcha'
 import { firebase } from '../firebase/firebase'
+import {history} from "../routers/AppRouter";
+import * as Yup from "yup";
 
 let firebaseError;
 
@@ -12,6 +14,7 @@ const CreateAccountPage = (
         values,
         errors,
         touched,
+        setSubmitting,
         isSubmitting,
         handleChange,
     }
@@ -43,11 +46,11 @@ const CreateAccountPage = (
                             placeholder="Password"
                             type="password"
                         />
-                        { touched.password && errors.password && <p className="box-layout__error">{errors.password}</p> }
+                        { touched.confirmPassword && errors.confirmPassword && <p className="box-layout__error">{errors.confirmPassword}</p> }
                         <Field
                             autoComplete="new-password"
                             className="box-layout__input"
-                            name="password"
+                            name="confirmPassword"
                             placeholder="Confirm password"
                             type="password"
                         />
@@ -58,7 +61,7 @@ const CreateAccountPage = (
                                 theme="light"
                             />
                         </div>
-                        <button className="button box-layout__button login-button box-layout__button-disabled">Sign Up!</button>
+                        <button className="button box-layout__button login-button">Sign Up!</button>
                     </Form>
                     <Link to="/" className="button button--link">Back</Link>
                 </div>
@@ -68,19 +71,34 @@ const CreateAccountPage = (
 );
 
 const FormikApp = withFormik({
-    mapPropsToValues({ email, password}) {
+    mapPropsToValues({  }) {
         return {
-            email: email || '',
-            password: password || ''
+            email: '',
+            password: '',
+            confirmPassword: ''
         }
     },
-    handleSubmit(values) {
-        firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
-            .catch(function(error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-            });
+    validationSchema: Yup.object().shape({
+        email: Yup.string().email('Email not valid').required('Email is required'),
+        password: Yup.string().min(6, 'Password must be 6 characters or longer').required('Password is required'),
+        confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
+    }),
+    handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
+        if (grecaptcha && grecaptcha.getResponse().length > 0) {
+            firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
+                .catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                })
+                .then(() => {
+                    setSubmitting = false;
+                    resetForm();
+                    history.push('/dashboard');
+                });
+        } else {
+            firebaseError = 'Please process the Recaptcha.';
+        }
     }
 })(CreateAccountPage);
 
-export default connect()(FormikApp);
+export default FormikApp;

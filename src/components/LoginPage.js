@@ -63,8 +63,7 @@ export const LoginPage = (
                     className="button box-layout__button"
                     to="/signup"
                     disabled={true}
-                >
-                      Create a New Account
+                >Create a New Account
               </Link>
           </div>
       </div>
