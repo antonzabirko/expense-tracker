@@ -22,4 +22,4 @@ If you want to see the latest dev: pull, install dependencies, and run `yarn run
 
 ## Stack
 
-Created using React with Redux.
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/antonzabirko/big-owl)
