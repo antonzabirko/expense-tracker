@@ -20,6 +20,6 @@ Please note that the github code is *nightly*, and the Heroku deploy is *version
 
 If you want to see the latest dev: pull, install dependencies, and run `yarn run dev-server`.
 
-## Stack:
+## Stack
 
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/antonzabirko/big-owl)
