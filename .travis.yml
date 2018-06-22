@@ -2,21 +2,23 @@ language: node_js
 node_js:
 - 8.11.3
 - node
-
 addons:
   browserstack:
-    username: "anton1175"
+    username: anton1175
     access_key:
-      secure: "GDWyuhXnmq3HeOEHK+MBM0yIONtnn1k91KcMnXyrtn8DhTXHw5RbPKx+xnffr15K3t4QpQyIR2hXsOQ09U4DEQ+6mp22LGvRqtJrd6SOlY0Zh1TZqHrSJarASERM0W5TgtL+6mqedx/Jim0O0dPPbDEfXFXcrToOLVnzvoM6tHt2dQ5mvBirLlbCIvQD6iOMxaDo/Fd3MIJaJGRoFYq7PNB8imjrNA1dT31BcD+eEZceprrZFXB20+WLBJVFJag7XKiFxHULPl2lz56wGR5JsvExns4pdlxgioT24E72cIPkG1NfRcqMDEpIP1DqxmSXzwfy9/E40i4AakfdFO5DinmAgMzAyNqVmjH2MEB1IQN2taKCGK/qL9arVsECslQbLba+18BE6Uswp9qAQkGC2iFCbTqMUEX4B604pLK4xZgkatadMaWSVV5sd5my/FMifn1cXIeswNc6AGUlfCs2B5IP635UGinQYLrap3ItT5t1fLkBhLqz785vJem2o1wKVuD03kXrvQLwYa6Up2WZkabrZZ7FhusyC4R/mTVluu6CJVk3YaStdM+PxfWxse9i8v3DQLUHZGhOmrr5b0xUyTcq1DlPR3b30f5/4pWdCMPF0AXYPScq8/m07DLanvmKjjD+lkXcQOqax5Z4Tiqtzdi7h4rXUBY5WFnX2TsdLus="
-
+      secure: GDWyuhXnmq3HeOEHK+MBM0yIONtnn1k91KcMnXyrtn8DhTXHw5RbPKx+xnffr15K3t4QpQyIR2hXsOQ09U4DEQ+6mp22LGvRqtJrd6SOlY0Zh1TZqHrSJarASERM0W5TgtL+6mqedx/Jim0O0dPPbDEfXFXcrToOLVnzvoM6tHt2dQ5mvBirLlbCIvQD6iOMxaDo/Fd3MIJaJGRoFYq7PNB8imjrNA1dT31BcD+eEZceprrZFXB20+WLBJVFJag7XKiFxHULPl2lz56wGR5JsvExns4pdlxgioT24E72cIPkG1NfRcqMDEpIP1DqxmSXzwfy9/E40i4AakfdFO5DinmAgMzAyNqVmjH2MEB1IQN2taKCGK/qL9arVsECslQbLba+18BE6Uswp9qAQkGC2iFCbTqMUEX4B604pLK4xZgkatadMaWSVV5sd5my/FMifn1cXIeswNc6AGUlfCs2B5IP635UGinQYLrap3ItT5t1fLkBhLqz785vJem2o1wKVuD03kXrvQLwYa6Up2WZkabrZZ7FhusyC4R/mTVluu6CJVk3YaStdM+PxfWxse9i8v3DQLUHZGhOmrr5b0xUyTcq1DlPR3b30f5/4pWdCMPF0AXYPScq8/m07DLanvmKjjD+lkXcQOqax5Z4Tiqtzdi7h4rXUBY5WFnX2TsdLus=
 before_install:
 - openssl aes-256-cbc -K $encrypted_0e9b775308a9_key -iv $encrypted_0e9b775308a9_iv
   -in .env.test.enc -out .env.test -d
-
 script: echo "Running tests against $(node -v)..."
-
 jobs:
- include:
-   - stage: Produce Coverage
-     node_js: node
-     script: cross-env NODE_ENV=test jest --config=jest.config.json --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  include:
+  - stage: Produce Coverage
+    node_js: node
+    script: cross-env NODE_ENV=test jest --config=jest.config.json --coverage && cat
+      ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: UxxohFgMR4GW5Io1PvzwDVA9OWVm8ncIuqQHIiOX+VazenmA21HtDoLqSoUDh5CIOm2pJgzOObUoXgRM7BDzVYGeADoBriiw+eVwP9z7NKwxorQ1Cr129OlGt1r2EZZz9t/yySwJvuE+dXHwwWWK90X5VnNXLbqQewffBbyD/n6EE3MPeZj7XxJvh/WKNAl+dcUvFFlB3lI8osMIlhv97Yfc6xuFUpApWh8FoVhKGS3dt6myjjtylEH3XLtIPeuXaI2yQYPYIb3fTCZ7lQRKTQuhQ/zOPfCQo87Rm2SWJBceAW7rDZBFP5StfIItzEE55HXneTHIfY4QKEeXfb9VpH+oTGw1VB44VyW9LABpXw/73L1H3FVWvkzoKkF6Gx0trzAk5gS+Z384OYrJ+x6jM7ZG9Ikaundft5vqTdqlnWUHbI/0i0dnEXeO0ibHRoH5+NWmEzUSAR/FKUJTNOjET7KCBS78kQdv1HxoKOkRa3EYx+0Ntzl3E4B6ISfhiZj5ZFzndNSNnEBjCd9Z+5rCrr3RVbS7FItIdZm15nx8shPTGxTRysT1IosShj1tDfLs4A5GbYB4LHdPukYokOxo0LJFuihpYvGIfFwcWmWL4QBA/odP0Wx7NLgjFc02OuDcJ+QqyFi7VVYdrZCq5HTG11voTvUirONiUgOVUg0YrRM=
+  app: expensemap
