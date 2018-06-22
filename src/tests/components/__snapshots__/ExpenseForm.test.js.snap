@@ -117,6 +117,7 @@ exports[`should not set amount on invalid amount value 1`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
@@ -242,6 +243,7 @@ exports[`should render ExpenseForm correctly 1`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
@@ -367,6 +369,7 @@ exports[`should render ExpenseForm with expense data 1`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
@@ -492,6 +495,7 @@ exports[`should render error for invalid for submission 1`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
@@ -622,6 +626,7 @@ exports[`should render error for invalid for submission 2`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
@@ -747,6 +752,7 @@ exports[`should set amount on valid amount value 1`] = `
     <div>
       <button
         className="button"
+        type="submit"
       >
         Save Expense
       </button>
