@@ -5,12 +5,9 @@ export const login = uid => ({
   uid,
 });
 
-export const startGoogleLogin = (() => (
-  () => firebase
-    .auth()
-    .signInWithPopup(googleAuthProvider)
-    .catch((e) => {})
-));
+export const logout = () => ({
+  type: 'LOGOUT',
+});
 
 export const startEmailLogin = ((email, password) => (
   () => firebase
@@ -19,9 +16,12 @@ export const startEmailLogin = ((email, password) => (
     .catch((e) => {})
 ));
 
-export const logout = () => ({
-  type: 'LOGOUT',
-});
+export const startGoogleLogin = (() => (
+  () => firebase
+    .auth()
+    .signInWithPopup(googleAuthProvider)
+    .catch((e) => {})
+));
 
 export const startLogout = (() => (
   () => firebase

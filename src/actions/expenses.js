@@ -34,6 +34,26 @@ export const startAddExpense = (expenseData = {}) => (
   }
 );
 
+// EDIT_EXPENSE
+export const editExpense = (id, updates) => ({
+  type: 'EDIT_EXPENSE',
+  id,
+  updates,
+});
+
+// START_EDIT_EXPENSES
+export const startEditExpense = (id, updates) => (
+  (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/expenses/${id}`)
+      .update({ ...updates })
+      .then(() => {
+        dispatch(editExpense(id, updates));
+      });
+  }
+);
+
 // REMOVE_EXPENSE
 export const removeExpense = (
   {
@@ -53,26 +73,6 @@ export const startRemoveExpense = ({ id }) => (
       .remove()
       .then(() => {
         dispatch(removeExpense({ id }));
-      });
-  }
-);
-
-// EDIT_EXPENSE
-export const editExpense = (id, updates) => ({
-  type: 'EDIT_EXPENSE',
-  id,
-  updates,
-});
-
-// START_EDIT_EXPENSES
-export const startEditExpense = (id, updates) => (
-  (dispatch, getState) => {
-    const uid = getState().auth.uid;
-
-    return database.ref(`users/${uid}/expenses/${id}`)
-      .update({ ...updates })
-      .then(() => {
-        dispatch(editExpense(id, updates));
       });
   }
 );

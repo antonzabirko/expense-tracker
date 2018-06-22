@@ -10,7 +10,6 @@ addons:
 before_install:
 - openssl aes-256-cbc -K $encrypted_0e9b775308a9_key -iv $encrypted_0e9b775308a9_iv
   -in .env.test.enc -out .env.test -d
-script: echo "Running tests against $(node -v)..."
 jobs:
   include:
   - stage: Produce Coverage
@@ -20,5 +19,7 @@ jobs:
 deploy:
   provider: heroku
   api_key:
-    secure: UxxohFgMR4GW5Io1PvzwDVA9OWVm8ncIuqQHIiOX+VazenmA21HtDoLqSoUDh5CIOm2pJgzOObUoXgRM7BDzVYGeADoBriiw+eVwP9z7NKwxorQ1Cr129OlGt1r2EZZz9t/yySwJvuE+dXHwwWWK90X5VnNXLbqQewffBbyD/n6EE3MPeZj7XxJvh/WKNAl+dcUvFFlB3lI8osMIlhv97Yfc6xuFUpApWh8FoVhKGS3dt6myjjtylEH3XLtIPeuXaI2yQYPYIb3fTCZ7lQRKTQuhQ/zOPfCQo87Rm2SWJBceAW7rDZBFP5StfIItzEE55HXneTHIfY4QKEeXfb9VpH+oTGw1VB44VyW9LABpXw/73L1H3FVWvkzoKkF6Gx0trzAk5gS+Z384OYrJ+x6jM7ZG9Ikaundft5vqTdqlnWUHbI/0i0dnEXeO0ibHRoH5+NWmEzUSAR/FKUJTNOjET7KCBS78kQdv1HxoKOkRa3EYx+0Ntzl3E4B6ISfhiZj5ZFzndNSNnEBjCd9Z+5rCrr3RVbS7FItIdZm15nx8shPTGxTRysT1IosShj1tDfLs4A5GbYB4LHdPukYokOxo0LJFuihpYvGIfFwcWmWL4QBA/odP0Wx7NLgjFc02OuDcJ+QqyFi7VVYdrZCq5HTG11voTvUirONiUgOVUg0YrRM=
+    secure: qRWqkG1I8oq8MMniJK+ckXs7I8r3lkAtdDudsiq9DtRfLUFPdkNDFP0Qq4GhZ82ke6rQwuE4MZuEGzv3v0d/G4a3RSZ6JTejAU0TOEeUMwSZojgvUgU6IKUB+3kzADshyN3Vnj/1BbHIXyIV56FeXyjQUDgWSgO8y9yeWzmbFAZlTjEKOzi5T9/zoMKVmA3PhyNDxFnI2RPGiSNvrPi8M8QL0nJch/ZFmdJj6lF1eFjPw7eWn+KDG63otJZ9h5n6WB1Xm9tS7vIWJ84G9FsvdeW5rSJNwFz0F+Jn5FjnaQmOo4WYbnH5vBW/fds381yQQnoMpoR+ASiP3xre2z6u+qFo2fO70vlfTtN4x5QiK0u8i5+05R5tOMfNcvb5HzmMRmYEz4jkGkMHqXA3mOaj764XWmMJMBzdiOu5xxl2PF/6UYJSIJmze3fSZ4Lnrbcx5djJbkwAcmPIC9Hhp6VfwJbq91uMaqzXszlu/NtMtykJAt4hHYD5BOzO+Z/3Tl/C1wAGFWS4mgiZjozI2jhN9Kkql6YNVpXwWjvn4/bYeceZCFzMaVk/nF2g0LTdLnoyzS0WcLOfKt+ypQmpL9NQKz+BQF9+vEUDwsj9hbIRb7/6Tr2lnMPuFnkXw4J/qdwXk8UwRpb9k+qYjbNA/fLYzP1zW/Xi8n3yDPfeyUetavI=
   app: expensemap
+  on:
+    repo: antonzabirko/expensemap
